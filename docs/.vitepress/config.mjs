@@ -26,6 +26,13 @@ export default defineConfig({
                 { text: "xargs", link: "/后端/Linux/xargs" },
               ],
             },
+            {
+              text: "设计模式",
+              collapsed: true,
+              items: [
+                { text: "SOLID原则", link: "/后端/设计模式/SOLID原则" },
+              ],
+            }
           ],
         },
       ],
