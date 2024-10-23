@@ -8,14 +8,11 @@ hero:
   tagline: My great project tagline
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: SOLID原则
+      link: /后端/设计模式/SOLID原则
     - theme: alt
-      text: API Examples
-      link: /api-examples
-    - theme: alt
-      text: API Examples2
-      link: /api-examples2
+      text: SCSS
+      link: /前端/SCSS
 
 features:
   - title: Feature A
@@ -25,15 +22,4 @@ features:
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
-
-# Getting Started 
-
-You can get started using VitePress right away using `npx`! 
-
-```sh
-sh npm init 
-npx vitepress init
-```
-
-
 
