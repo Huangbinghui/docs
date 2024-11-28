@@ -11,15 +11,21 @@ hero:
       text: SOLID原则
       link: /后端/设计模式/SOLID原则
     - theme: alt
-      text: SCSS
-      link: /前端/SCSS
+      text: 关于
+      link: /关于/me
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - icon: ➬
+    title: 前端开发
+    details: 记录总结当前阶段前端学习的新技能和一些工作开发中遇到的问题
+  - icon: ☕️
+    title: 后端开发
+    details: 记录总结Java、Spring等后端的开发技术问题
+  - icon: 💻
+    title: 计算机基础
+    details: 记录学习的计算机基础知识
+  - icon: 🎮
+    title: 兴趣分享
+    details: 记录和分享一些游戏、书籍、电影、动漫等兴趣的爱好
 ---
 
