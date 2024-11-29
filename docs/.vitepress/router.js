@@ -77,6 +77,13 @@ export const tools = [
             {text: "manim", link: "/工具/manim/index"},
         ],
     },
+    {
+        text: "Vim", collapsed: true, items: [
+            {
+                text: "vim基本使用", link: "/工具/vim/VIM使用"
+            }
+        ],
+    }
 ]
 
 export const interest = []
