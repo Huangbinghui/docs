@@ -82,7 +82,7 @@ public class SavingsAccount {
         // credit business logic 
     }
     public void sendNotification(Medium medium) {
-        Sender.sendNotification(medium, this);
+        Sender.sendNotification(medium, this); // [!code focus]
     }
 }
 ```
