@@ -19,7 +19,9 @@ SOLID 原则其实是用来指导软件设计的，它一共分为五条设计�
 
 例如，假设我们正在用 Java 设计一个银行应用程序，其中有一个`SavingsAccount`类，该类允许借记、贷记和`sendNotification`等基本操作。 `sendNotification`方法采用名为`NotificationMedium`的枚举（如电子邮件、SMS 等）并使用适当的介质发送更新。我们将为此编写代码，如下所示。
 
-```java
+::: code-group
+
+```java [SavingsAccount.java]
 public class SavingsAccount {
     public int balance;
     public String name;
@@ -44,12 +46,14 @@ public class SavingsAccount {
 }
 ```
 
-```java
+```java [NotificationMedium.java]
 public enum NotificationMedium {
     SMS,
     EMAIL
 }
 ```
+
+:::
 
 现在，如果您查看上面的`SavingsAccount`类，您会发现它可能由于多种原因而发生更改：
 
@@ -60,7 +64,9 @@ public enum NotificationMedium {
 
 我们按照SOLID原则重构上面的代码
 
-```java
+::: code-group
+
+```java [SavingsAccount.java]
 public class SavingsAccount {
     public int balance;
     public String name;
@@ -81,14 +87,14 @@ public class SavingsAccount {
 }
 ```
 
-```java
+```java [NotificationMedium.java]
 public enum NotificationMedium {
     SMS,
     EMAIL
 }
 ```
 
-```java
+```java [Sender.java]
 public class Sender {
     public static void sendNotification(NotificationMedium medium, SavingsAccount account) {
         // extract account data from the account object 
@@ -101,6 +107,8 @@ public class Sender {
 }
 ```
 
+:::
+
 现在，由于我们已经重构了代码，如果`NotificationMedium`或格式有任何变化，我们将更改`Sender`类。但是，如果`SavingsAccount`的核心逻辑发生变化， `SavingsAccount`类也会发生变化。
 
 ## 开闭原则（OCP）
@@ -111,7 +119,8 @@ public class Sender {
 
 我将创建一个名为`Cart`的类，其中包含您可以添加到其中的`Item`列表。根据商品的类型及其税收，我们希望创建一个方法来计算`Cart`类中的购物车总价值。
 
-```java
+::: code-group
+```java [Cart.java]
 public class Cart {
     private List < Item > items;
     public Cart() {
@@ -136,7 +145,7 @@ public class Cart {
 }
 ```
 
-```java
+```java [Item.java]
 @Getter 
 @Setter 
 public abstract class Item {
@@ -148,12 +157,14 @@ public abstract class Item {
 }
 ```
 
-```java
+```java [ItemType.java]
 public enum ItemType {
     ELECTRONIC,
     GIFT
 }
 ```
+
+:::
 
 在上面的示例中， `calculateCartValue`方法通过迭代购物车内的所有商品并根据商品类型调用逻辑来计算购物车价值。
 
@@ -164,8 +175,9 @@ public enum ItemType {
 然而，只需很少的重构，我们就可以使代码遵循开闭原则。让我们看看如何。
 
 首先，我们将`Item`类抽象化，并为不同类型的`Item`创建具体类，如下所示。
+::: code-group
 
-```java
+```java [Item.java]
 public abstract class Item {
     protected double price;
     public double getValue() {
@@ -174,7 +186,7 @@ public abstract class Item {
 }
 ```
 
-```java
+```java [ElectronicItem.java]
 public class ElectronicItem extends Item {
     public ElectronicItem(double price) {
         super.price = price;
@@ -186,7 +198,7 @@ public class ElectronicItem extends Item {
 }
 ```
 
-```java
+```java [GiftItem.java]
 public class GiftItem extends Item {
     public GiftItem(double price) {
         super.price = price;
@@ -198,7 +210,7 @@ public class GiftItem extends Item {
 }
 ```
 
-```java
+```java [GroceryItem.java]
 public class GroceryItem extends Item {
     public GroceryItem(double price) {
         super.price = price;
@@ -209,6 +221,8 @@ public class GroceryItem extends Item {
     }
 }
 ```
+
+:::
 
 在每个具体的 Item 类（如`GroceryItem` 、 `GiftItem`和`ElectronicItem`中实现`getValue()`方法，该方法包含税额和价值计算的业务逻辑。
 
