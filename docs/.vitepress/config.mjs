@@ -3,7 +3,7 @@ import {nav, sidebar} from "./router.js";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: "/docs",
+  base: "/docs/",
   lang: "zh-CN",
   title: "herberth",
   description: "herberth 技术博客",
