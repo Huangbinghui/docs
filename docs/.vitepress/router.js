@@ -60,6 +60,16 @@ export const backend = [
         items: [
             {text: "SOLID原则", link: "/后端/设计模式/SOLID原则"},
         ],
+    },
+    {
+        text: "Spring Boot", collapsed: true,
+        items: [
+            {
+                text: "基础", collapsed: true, items: [
+                    {text: "CommandLineRunner", link: "/后端/Spring Boot/CommandLineRunner"}
+                ]
+            }
+        ]
     }
 ]
 
