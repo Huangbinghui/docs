@@ -70,7 +70,19 @@ export const backend = [
                 ]
             }
         ]
-    }
+    },
+    {
+        text: "Netty", collapsed: true,
+        items: [
+            {
+                text: "Netty的概念及体系结构", collapsed: true, items: [
+                    {text: "Netty 异步和事件驱动", link: "/后端/Netty/1、Netty 异步和事件驱动.md"},
+                    {text: "你的第一个Netty应用程序", link: "/后端/Netty/2、你的第一个Netty应用程序.md"},
+                    {text: "Netty的组件和设计", link: "/后端/Netty/3、Netty的组件和设计.md"},
+                ]
+            }
+        ]
+    },
 ]
 
 
