@@ -148,4 +148,4 @@ Netty 的引导类为应用程序的网络层配置提供了容器,这涉及将�
 
 ---
 
-[^1]: 实际上,ServerBootstrap类也可以只使用一个EventLoopGroup,此时其将在两个场景下共用同一个EventLoopGroup。
+[^1]:实际上,ServerBootstrap类也可以只使用一个EventLoopGroup,此时其将在两个场景下共用同一个EventLoopGroup。

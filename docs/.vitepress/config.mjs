@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
 import {nav, sidebar} from "./router.js";
+import mdFootnote from "markdown-it-footnote";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -33,6 +34,9 @@ export default defineConfig({
       dangerLabel: '危险',
       infoLabel: '信息',
       detailsLabel: '详细信息'
+    },
+    config: (md) => {
+      md.use(mdFootnote)
     },
   }
 });
