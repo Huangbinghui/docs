@@ -14,14 +14,6 @@
 // 前端
 export const frontend = [
     {
-        text: "vitepress", collapsed: true, items: [
-            {
-                text: "开始",
-                link: "/前端/vitepress/开始"
-            }
-        ]
-    },
-    {
         text: "scss", collapsed: true, items: [
             {
                 text: "scss",
@@ -113,6 +105,30 @@ export const tools = [
                 text: "vim基本使用", link: "/工具/vim/VIM使用"
             }
         ],
+    },
+    {
+        text: "typora", collapsed: true, items: [
+            {
+                text: "yaml-front-matter",
+                link: "/工具/typora/yaml-front-matter.md"
+            }
+        ]
+    },
+    {
+        text: "vitepress", collapsed: true, items: [
+            {
+                text: "开始",
+                link: "/工具/vitepress/开始.md"
+            },
+            {
+                text: "Markdown",
+                link: "/工具/vitepress/Markdown.md"
+            },
+            {
+                text: "在Markdown使用Vue",
+                link: "/工具/vitepress/在Markdown使用Vue.md"
+            },
+        ]
     }
 ]
 

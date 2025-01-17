@@ -1,6 +1,8 @@
 import { defineConfig } from "vitepress";
 import {nav, sidebar} from "./router.js";
 import mdFootnote from "markdown-it-footnote";
+import tailwindcss from "tailwindcss";
+import autoprefixer from "autoprefixer";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -12,6 +14,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav,
     sidebar,
+    logo: '/logo.svg',
     socialLinks: [
       { icon: "github", link: "https://github.com/Huangbinghui" },
       { icon: "x", link: "..." },
@@ -38,5 +41,15 @@ export default defineConfig({
     config: (md) => {
       md.use(mdFootnote)
     },
+  },
+  vite: {
+    css: {
+      postcss: {
+        plugins: [
+          tailwindcss(),
+          autoprefixer()
+        ]
+      }
+    }
   }
 });
