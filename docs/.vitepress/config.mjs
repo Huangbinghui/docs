@@ -10,6 +10,7 @@ export default defineConfig({
   lang: "zh-CN",
   title: "herberth",
   description: "herberth 技术博客",
+  head:[['link', { rel: 'icon', href: '/docs/favicon.ico' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav,
