@@ -11,7 +11,7 @@ hero:
     alt: VitePress
 ---
 <script setup>
-  import Home from '../components/home.vue'
+  import Home from '../components/Home.vue'
 </script>
 
 <Home/>
