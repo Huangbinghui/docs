@@ -5,7 +5,7 @@ aside: false
 ---
 
 <script setup>
-  import Me from '../../components/me.vue'
+  import Me from '../../components/Me.vue'
 </script>
 
 <Me/>
