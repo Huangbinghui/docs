@@ -10,7 +10,6 @@ hero:
     src: /logo.svg
     alt: VitePress
 ---
-
 <script setup>
   import Home from '../components/home.vue'
 </script>

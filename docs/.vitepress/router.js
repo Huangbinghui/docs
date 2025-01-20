@@ -134,16 +134,6 @@ export const tools = [
 
 export const interest = []
 
-export const about = [
-    {
-        text: "关于【我】", collapsed: true, items: [
-            {
-                text: "关于",
-                link: "/关于/me"
-            }
-        ]
-    }
-]
 
 // 侧边栏
 export const sidebar = {
@@ -166,12 +156,6 @@ export const sidebar = {
             text: "工具",
             items: tools,
         },
-    ],
-    "/关于/": [
-        {
-            text: "关于",
-            items: about,
-        }
     ]
 }
 // 顶部导航栏
