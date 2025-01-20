@@ -23,7 +23,7 @@ const toLink = () => {
       <div class="flex">
         <button class="transform transition-all cursor-pointer ml-0">
           <div class="rounded-full h-8 w-8 bg-secondary">
-            <img class="rounded-full h-8 w-8" src="/docs/avatar.jpg" alt="头像" />
+            <img class="rounded-full h-8 w-8" :src="withBase('/avatar.jpg')" alt="头像" />
           </div>
         </button>
       </div>
