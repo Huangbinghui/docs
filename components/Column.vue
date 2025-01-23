@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from "vue";
 import Post from "./Post.vue";
 
 const porps = defineProps(["columnName", "posts"]);

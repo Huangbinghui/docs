@@ -1,6 +1,5 @@
 <script setup>
 import { useRouter, withBase } from "vitepress";
-import { defineProps } from "vue";
 const props = defineProps(["title", "link", "createtime", "tags"]);
 const link = withBase(props.link)
 const router = useRouter()
