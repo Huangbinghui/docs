@@ -1,4 +1,6 @@
 {
+  "name": "黄丙辉的技术博客",
+  "author": {"name": "黄丙辉"},
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev docs",
