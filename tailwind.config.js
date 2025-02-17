@@ -9,4 +9,17 @@ export default {
   options: {
     safelist: ["html", "body"],
   },
+  theme: {
+    extend: {
+        invert: {
+          25: '.25',
+          50: '.5',
+          75: '.75',
+          80: '.8',
+          85: '.85',
+          90: '.',
+          100: '1',
+        }
+    }
+  }
 };

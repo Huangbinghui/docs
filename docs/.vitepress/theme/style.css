@@ -141,10 +141,12 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
-img {
-  @apply mx-auto;
-}
-
-table {
-  @apply grid place-items-center;
+@layer base {
+  img {
+    @apply mx-auto dark:invert-85 dark:hue-rotate-180 !important;
+  }
+  
+  table {
+    @apply grid place-items-center;
+  }
 }
