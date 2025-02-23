@@ -70,15 +70,27 @@ export const backend = [
         items: [
             {
                 text: "Netty的概念及体系结构", collapsed: true, items: [
-                    {text: "Netty 异步和事件驱动", link: "/后端/Netty/1、Netty异步和事件驱动.md"},
-                    {text: "你的第一个Netty应用程序", link: "/后端/Netty/2、你的第一个Netty应用程序.md"},
-                    {text: "Netty的组件和设计", link: "/后端/Netty/3、Netty的组件和设计.md"},
-                    {text: "传输", link: "/后端/Netty/4、传输.md"},
-                    {text: "ByteBuf", link: "/后端/Netty/5、ByteBuf"},
-                    {text: "ChannelHandler和ChannelPipeline", link: "/后端/Netty/6、ChannelHandler和ChannelPipeline"},
-                    {text: "EventLoop和线程模型", link: "后端/Netty/7、EventLoop和线程模型"},
-                    {text: "引导", link: "/后端/Netty/8、引导"},
-                    {text: "单元测试", link: "/后端/Netty/9、单元测试"},
+                    {text: "第1章 Netty 异步和事件驱动", link: "/后端/Netty/1、Netty异步和事件驱动.md"},
+                    {text: "第2章 你的第一个Netty应用程序", link: "/后端/Netty/2、你的第一个Netty应用程序.md"},
+                    {text: "第3章 Netty的组件和设计", link: "/后端/Netty/3、Netty的组件和设计.md"},
+                    {text: "第4章 传输", link: "/后端/Netty/4、传输.md"},
+                    {text: "第5章 ByteBuf", link: "/后端/Netty/5、ByteBuf"},
+                    {text: "第5章 ChannelHandler和ChannelPipeline", link: "/后端/Netty/6、ChannelHandler和ChannelPipeline"},
+                    {text: "第6章 EventLoop和线程模型", link: "后端/Netty/7、EventLoop和线程模型"},
+                    {text: "第7章 引导", link: "/后端/Netty/8、引导"},
+                    {text: "第8章 单元测试", link: "/后端/Netty/9、单元测试"},
+                ]
+            },
+            {
+                text: "编解码器", collapsed: true, items: [
+                    {text: "第10章 编解码器框架", link: "/后端/Netty/10、编解码器.md"},
+                    {text: "第11章 预置的 ChannelHandler 和编解码器", link: "/后端/Netty/11、预置的ChannelHandler和编解码器.md"},
+                ]
+            },
+            {
+                text: "网络协议", collapsed: true, items: [
+                    {text: "第12章 WebSocket", link: "/后端/Netty/13、WebSocket.md"},
+                    {text: "第13章 使用UDP广播事件", link: "/后端/Netty/14、使用UDP广播事件.md"},
                 ]
             }
         ]
