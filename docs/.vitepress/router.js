@@ -95,6 +95,20 @@ export const backend = [
             }
         ]
     },
+    {
+        text: " Kafka", collapsed: true,
+        items: [
+            {
+                text: "1、初识Kafka",collapsed: true, items: [
+                    {text: "发布与订阅消息系统",link:''},
+                    {text: "Kafka登场",link:''},
+                    {text: "为什么选择Kafka",link:''},
+                    {text: "数据生态系统",link:''},
+                    {text: "起源故事",link:''},
+                ]
+            }
+        ]
+    }
 ]
 
 
