@@ -75,10 +75,10 @@ export const backend = [
                     {text: "第3章 Netty的组件和设计", link: "/后端/Netty/3、Netty的组件和设计.md"},
                     {text: "第4章 传输", link: "/后端/Netty/4、传输.md"},
                     {text: "第5章 ByteBuf", link: "/后端/Netty/5、ByteBuf"},
-                    {text: "第5章 ChannelHandler和ChannelPipeline", link: "/后端/Netty/6、ChannelHandler和ChannelPipeline"},
-                    {text: "第6章 EventLoop和线程模型", link: "后端/Netty/7、EventLoop和线程模型"},
-                    {text: "第7章 引导", link: "/后端/Netty/8、引导"},
-                    {text: "第8章 单元测试", link: "/后端/Netty/9、单元测试"},
+                    {text: "第6章 ChannelHandler和ChannelPipeline", link: "/后端/Netty/6、ChannelHandler和ChannelPipeline"},
+                    {text: "第7章 EventLoop和线程模型", link: "后端/Netty/7、EventLoop和线程模型"},
+                    {text: "第8章 引导", link: "/后端/Netty/8、引导"},
+                    {text: "第9章 单元测试", link: "/后端/Netty/9、单元测试"},
                 ]
             },
             {

@@ -226,7 +226,9 @@ pipeline.replace("handler2", "handler4", new ForthHandler());
 
 重组 ChannelHandler 的这种能力使我们可以用它来轻松地实现极其灵活的逻辑。
 
-::: tip ChannelHandler 的执行和阻塞 
+<a id="ChannelHandler的执行和阻塞" />
+
+::: tip ChannelHandler 的执行和阻塞
 
 通常 ChannelPipeline 中的每一个 ChannelHandler 都是通过它的 EventLoop (I/O 线程) 来处理传递给它的事件的。所以至关重要的是不要阻塞这个线程,因为这会对整体的 I/O 处理产生负面的影响。  
 
@@ -505,3 +507,4 @@ public class OutboundExceptionHandler extends ChannelOutboundHandlerAdapter {
 [^5]: 触发对下一个ChannelInboundHandler上的 fireChannelWritabilityChanged()方法的调用 
 [^6]: 主要的问题在于, 对于其所持有的状态的修改并不是线程安全的, 比如也可以通过使用 AtomicInteger 来规避这个问题。
 [^7]: 即 Netty 将会通过 Warning 级别的日志记录该异常到达了 ChannelPipeline 的尾端,但没有被处理, 并尝试释放该异常。
+[^ChannelHandler的执行和阻塞]:

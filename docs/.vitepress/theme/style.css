@@ -74,6 +74,18 @@
   --vp-c-danger-soft: var(--vp-c-red-soft);
 }
 
+img {
+  @apply mx-auto;
+}
+
+.dark img {
+  @apply invert-85 hue-rotate-180;
+}
+
+table {
+  @apply grid place-items-center !important;
+}
+
 /**
  * Component: Button
  * -------------------------------------------------------------------------- */
@@ -139,12 +151,4 @@
 
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
-}
-
-img {
-  @apply mx-auto dark:invert-85 dark:hue-rotate-180 !important;
-}
-
-table {
-  @apply grid place-items-center;
 }

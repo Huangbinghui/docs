@@ -20,6 +20,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav,
     sidebar,
+    aside: false,
     logo: '/logo.svg',
     socialLinks: [
       { icon: "github", link: "https://github.com/Huangbinghui" },
