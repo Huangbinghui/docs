@@ -82,9 +82,9 @@ img {
   @apply invert-85 hue-rotate-180;
 }
 
-table {
+/* table {
   @apply grid place-items-center !important;
-}
+} */
 
 /**
  * Component: Button
