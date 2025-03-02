@@ -4,6 +4,6 @@ typora-root-url: /Volumes/硬盘/Code/docs/docs/public
 ---
 
 <script setup>
-    import TableCaption from '../../../components/TableCaption.vue'
+    import TableCaption from '../../.vitepress/theme/components/TableCaption.vue'
 </script>
 

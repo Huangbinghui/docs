@@ -11,8 +11,7 @@ hero:
     alt: VitePress
 ---
 <script setup>
-  import Home from '../components/Home.vue'
-  import Archives from '../components/Archives.vue'
+  import Home from './.vitepress/theme/components/Home.vue';
 </script>
 
 <Home/>

@@ -1,10 +1,10 @@
 // https://vitepress.dev/guide/custom-theme
 import DefaultTheme from "vitepress/theme";
-import Layout from "./Layout.vue";
-import "./style.css";
-import "./blur.css";
-import "./code-title.css";
-import Confetti from "./Confetti.vue";
+import Layout from "./components/Layout.vue";
+import "./style/style.css";
+import "./style/blur.css";
+import "./style/code-title.css";
+import Confetti from "./components/Confetti.vue";
 import "virtual:group-icons.css";
 
 import "@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css";

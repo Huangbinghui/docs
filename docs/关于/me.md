@@ -5,7 +5,7 @@ aside: false
 ---
 
 <script setup>
-  import Me from '../../components/Me.vue'
+  import Me from '../.vitepress/theme/components/Me.vue'
 </script>
 
 <Me/>

@@ -81,7 +81,7 @@
 <script lang="ts" setup>
   // import { getQueryParam, goToLink, getChineseZodiac, getChineseZodiacAlias } from '../utils.ts';
   import ArticleMetadata from './ArticleMetadata.vue'
-  import { data as articleData } from '../article.data.js';
+  import { data as articleData } from '../../../../article.data.js';
 
   console.log(articleData)
 
