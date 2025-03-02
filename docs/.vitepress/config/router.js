@@ -75,7 +75,10 @@ export const backend = [
                     {text: "第3章 Netty的组件和设计", link: "/后端/Netty/3、Netty的组件和设计.md"},
                     {text: "第4章 传输", link: "/后端/Netty/4、传输.md"},
                     {text: "第5章 ByteBuf", link: "/后端/Netty/5、ByteBuf"},
-                    {text: "第6章 ChannelHandler和ChannelPipeline", link: "/后端/Netty/6、ChannelHandler和ChannelPipeline"},
+                    {
+                        text: "第6章 ChannelHandler和ChannelPipeline",
+                        link: "/后端/Netty/6、ChannelHandler和ChannelPipeline"
+                    },
                     {text: "第7章 EventLoop和线程模型", link: "后端/Netty/7、EventLoop和线程模型"},
                     {text: "第8章 引导", link: "/后端/Netty/8、引导"},
                     {text: "第9章 单元测试", link: "/后端/Netty/9、单元测试"},
@@ -84,7 +87,10 @@ export const backend = [
             {
                 text: "编解码器", collapsed: true, items: [
                     {text: "第10章 编解码器框架", link: "/后端/Netty/10、编解码器.md"},
-                    {text: "第11章 预置的 ChannelHandler 和编解码器", link: "/后端/Netty/11、预置的ChannelHandler和编解码器.md"},
+                    {
+                        text: "第11章 预置的 ChannelHandler 和编解码器",
+                        link: "/后端/Netty/11、预置的ChannelHandler和编解码器.md"
+                    },
                 ]
             },
             {
@@ -99,12 +105,12 @@ export const backend = [
         text: " Kafka", collapsed: true,
         items: [
             {
-                text: "1、初识Kafka",collapsed: true, items: [
-                    {text: "发布与订阅消息系统",link:''},
-                    {text: "Kafka登场",link:''},
-                    {text: "为什么选择Kafka",link:''},
-                    {text: "数据生态系统",link:''},
-                    {text: "起源故事",link:''},
+                text: "1、初识Kafka", collapsed: true, items: [
+                    {text: "发布与订阅消息系统", link: ''},
+                    {text: "Kafka登场", link: ''},
+                    {text: "为什么选择Kafka", link: ''},
+                    {text: "数据生态系统", link: ''},
+                    {text: "起源故事", link: ''},
                 ]
             }
         ]

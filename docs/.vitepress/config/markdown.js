@@ -1,7 +1,5 @@
 import mdFootnote from "markdown-it-footnote";
-import {
-    groupIconMdPlugin
-} from "vitepress-plugin-group-icons";
+import {groupIconMdPlugin} from "vitepress-plugin-group-icons";
 export const markdown = {
     lineNumbers: true,
     math: true,

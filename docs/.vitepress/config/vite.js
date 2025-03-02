@@ -1,9 +1,8 @@
 import tailwindcss from "tailwindcss";
 import autoprefixer from "autoprefixer";
-import {
-    groupIconVitePlugin,
-} from "vitepress-plugin-group-icons";
-export const  vite = {
+import {groupIconVitePlugin} from "vitepress-plugin-group-icons";
+
+export const vite = {
     //阅读增强 插件
     optimizeDeps: {
         exclude: ["@nolebase/vitepress-plugin-enhanced-readabilities/client"],

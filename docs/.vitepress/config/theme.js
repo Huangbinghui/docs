@@ -7,8 +7,7 @@ export const themeConfig = {
     aside: false,
     logo: "/logo.svg",
     socialLinks: [
-        { icon: "github", link: "https://github.com/Huangbinghui" },
-        { icon: "x", link: "..." },
+        {icon: "github", link: "https://github.com/Huangbinghui"},
     ],
     search: {
         provider: "local",

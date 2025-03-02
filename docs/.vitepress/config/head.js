@@ -1,5 +1,5 @@
 export const head = [
-    ["link", { rel: "icon", href: "/docs/favicon.ico" }],
+    ["link", {rel: "icon", href: "/docs/favicon.ico"}],
     [
         "link",
         {
