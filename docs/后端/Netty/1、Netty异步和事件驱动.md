@@ -9,7 +9,7 @@ typora-root-url: /Volumes/硬盘/Code/docs/docs/public
 
 那些最早期的 Java API(java.net)只支持由本地系统套接字库提供的所谓的阻塞函数。
 
-```java
+```java [123.java]
 ServerSocket serverSocket = new ServerSocket(portNumber); // 建一个新的 ServerSocket, 用以监听指定端口上的连接请求
 Socket clientSocket = serverSocket.accept(); // 对 accept()方法的调用将被阻塞,直到一个连接建立
 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); // 这些流对象都派生于该套接字的流对象

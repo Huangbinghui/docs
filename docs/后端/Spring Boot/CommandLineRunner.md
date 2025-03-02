@@ -4,7 +4,7 @@ CommandLineRunner和ApplicationRunner可以在Spring启动之后运行一些代�
 
 ::: code-group
 
-```java [CommandLineRunner]
+```java [CommandLineRunner.java]
 @FunctionalInterface
 public interface CommandLineRunner {
 
@@ -18,7 +18,7 @@ public interface CommandLineRunner {
 }
 ```
 
-```java [ApplicationRunner]
+```java [ApplicationRunner.java]
 @FunctionalInterface
 public interface ApplicationRunner {
 
