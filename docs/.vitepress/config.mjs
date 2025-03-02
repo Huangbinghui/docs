@@ -3,6 +3,10 @@ import { nav, sidebar } from "./router.js";
 import mdFootnote from "markdown-it-footnote";
 import tailwindcss from "tailwindcss";
 import autoprefixer from "autoprefixer";
+import {
+  groupIconMdPlugin,
+  groupIconVitePlugin,
+} from "vitepress-plugin-group-icons";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -70,21 +74,20 @@ export default defineConfig({
     },
     config: (md) => {
       md.use(mdFootnote);
+      md.use(groupIconMdPlugin); //代码组图标
     },
   },
   vite: {
     //阅读增强 插件
     optimizeDeps: {
-      exclude: [
-        '@nolebase/vitepress-plugin-enhanced-readabilities/client',
-      ],
+      exclude: ["@nolebase/vitepress-plugin-enhanced-readabilities/client"],
     },
     ssr: {
       noExternal: [
         // 如果还有别的依赖需要添加的话，并排填写和配置到这里即可
-        '@nolebase/vitepress-plugin-enhanced-readabilities',
+        "@nolebase/vitepress-plugin-enhanced-readabilities",
         //闪烁高亮当前的目标标题
-        '@nolebase/vitepress-plugin-highlight-targeted-heading',
+        "@nolebase/vitepress-plugin-highlight-targeted-heading",
       ],
     },
     css: {
@@ -92,5 +95,12 @@ export default defineConfig({
         plugins: [tailwindcss(), autoprefixer()],
       },
     },
+    plugins: [
+      groupIconVitePlugin({
+        customIcon: {
+          java: "devicon:java-wordmark",
+        },
+      }), //代码组图标
+    ],
   },
 });

@@ -4,6 +4,7 @@ import Layout from "./Layout.vue";
 import "./style.css";
 import "./blur.css";
 import Confetti from "./Confetti.vue";
+import 'virtual:group-icons.css';
 
 import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css'
 
