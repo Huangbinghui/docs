@@ -3,7 +3,7 @@ import DefaultTheme from 'vitepress/theme'
 import Layout from "./Layout.vue";
 import "./style.css";
 import "./blur.css";
-import Confetti from "canvas-confetti";
+import Confetti from "./Confetti.vue";
 
 import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css'
 
@@ -17,10 +17,6 @@ export default {
     extends: DefaultTheme,
     Layout,
     enhanceApp({ app, router }) {
-        app.component("Confetti", Confetti({
-            particleCount: 100,
-            spread: 170,
-            origin: { y: 0.6 },
-        })); //注册全局组件
+        app.component("Confetti", Confetti); //注册全局组件
     },
 }
