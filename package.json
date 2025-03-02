@@ -14,6 +14,7 @@
     "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.15.0",
     "@nolebase/vitepress-plugin-highlight-targeted-heading": "^2.15.0",
     "autoprefixer": "^10.4.20",
+    "canvas-confetti": "^1.9.3",
     "markdown-it-footnote": "^4.0.0",
     "markdown-it-mathjax3": "^4.3.2",
     "postcss": "^8.5.1",

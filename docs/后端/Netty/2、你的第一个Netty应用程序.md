@@ -15,14 +15,14 @@ typora-root-url: /Volumes/硬盘/Code/docs/docs/public
 
 所有的 Netty 服务器都需要以下两部分。 
 
-*   至少一个 ChannelHandler—该<u>组件实现了服务器对从客户端接收的数据的处理</u>, 即它的<u>业务逻辑</u>。 
+*   至少一个 ChannelHandler—该<mark>组件实现了服务器对从客户端接收的数据的处理</mark>, 即它的<mark>业务逻辑</mark>。 
 *   引导—这是**配置服务器的启动代码**。至少,它会将服务器绑定到它要监听连接请求的端口上。
 
 ## ChannelHandler 和业务逻辑
 
 在第 1 章中,我们介绍了 Future 和回调,并且阐述了它们在事件驱动设计中的应用。 我们还讨论了 ChannelHandler,它是一个接口族的父接口,它的实现负责接收并响应事件通知。在 Netty 应用程序中,所有的数据处理逻辑都包含在这些核心抽象的实现中。
 
-因为你的 Echo 服务器会响应传入的消息, 所以它需要实现`ChannelInboundHandler` 接口, 用来定义响应入站事件的方法。这个简单的应用程序<u>只需要用到少量的这些方法,所以继承 `ChannelInboundHandlerAdapter` 类也就足够了,它提供了ChannelInboundHandler 的默认实现</u>。
+因为你的 Echo 服务器会响应传入的消息, 所以它需要实现`ChannelInboundHandler` 接口, 用来定义响应入站事件的方法。这个简单的应用程序<mark>只需要用到少量的这些方法,所以继承 `ChannelInboundHandlerAdapter` 类也就足够了,它提供了ChannelInboundHandler 的默认实现</mark>。
 
 我们感兴趣的方法是: 
 
@@ -237,7 +237,7 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 }
 ```
 
-接下来,你重写了 `channelRead0()`方法。每当接收数据时,都会调用这个方法。需要注意的是,由<u>服务器发送的消息可能会被分块接收</u>。也就是说,如果服务器发送了 5 字节,那么不能保证这 5 字节会被一次性接收。即使是对于这么少量的数据,channelRead0()方法也可能会被调用两次,第一次使用一个持有 3 字节的 ByteBuf(Netty 的字节容器) ,第二次使用一个持有 2 字节的 ByteBuf。作为一个面向流的协议,TCP 保证了字节数组将会按照服务器发送它们的顺序被接收。
+接下来,你重写了 `channelRead0()`方法。每当接收数据时,都会调用这个方法。需要注意的是,由<mark>服务器发送的消息可能会被分块接收</mark>。也就是说,如果服务器发送了 5 字节,那么不能保证这 5 字节会被一次性接收。即使是对于这么少量的数据,channelRead0()方法也可能会被调用两次,第一次使用一个持有 3 字节的 ByteBuf(Netty 的字节容器) ,第二次使用一个持有 2 字节的 ByteBuf。作为一个面向流的协议,TCP 保证了字节数组将会按照服务器发送它们的顺序被接收。
 
 >   [!TIP]
 >
@@ -255,7 +255,7 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
 ## 引导客户端
 
-引导客户端类似于引导服务器,不同的是,客户端是<u>使用主机和端口参数来连接远程地</u>址,也就是这里的 Echo 服务器的地址,而不是绑定到一个一直被监听的端口。
+引导客户端类似于引导服务器,不同的是,客户端是<mark>使用主机和端口参数来连接远程地</mark>址,也就是这里的 Echo 服务器的地址,而不是绑定到一个一直被监听的端口。
 
 ```java
 package org.huangbh;
@@ -314,7 +314,7 @@ public class EchoClient {
 }
 ```
 
-和之前一样,使用了 NIO 传输。注意,你可<u>以在客户端和服务器上分别使用不同的传输</u>。例如,在服务器端使用 NIO 传输,而在客户端使用 OIO 传输。在第 4 章,我们将探讨影响你选择适用于特定用例的特定传输的各种因素和场景。
+和之前一样,使用了 NIO 传输。注意,你可<mark>以在客户端和服务器上分别使用不同的传输</mark>。例如,在服务器端使用 NIO 传输,而在客户端使用 OIO 传输。在第 4 章,我们将探讨影响你选择适用于特定用例的特定传输的各种因素和场景。
 
 让我们回顾一下这一节中所介绍的要点:
 

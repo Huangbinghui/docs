@@ -15,3 +15,4 @@ hero:
 </script>
 
 <Home/>
+<Confetti />

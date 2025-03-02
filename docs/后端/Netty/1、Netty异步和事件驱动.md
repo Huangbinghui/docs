@@ -144,25 +144,25 @@ Netty 是一个网络编程框架, 所以事件是按照它们与入站或出站
 
 Netty 的 ChannelHandler 为处理器提供了基本的抽象,如图 1-3 所示的那些。我们会在适当的时候对 ChannelHandler 进行更多的说明,但是目前你可以认为每个 ChannelHandler 的实例都类似于一种为了响应特定事件而被执行的回调。
 
-<u>Netty 提供了大量预定义的可以开箱即用的 ChannelHandler 实现</u>,包括用于各种协议(如 HTTP 和 SSL/TLS)的 ChannelHandler。在内部,ChannelHandler 自己也使用了事件和 Future,使得它们也成为了你的应用程序将使用的相同抽象的消费者。
+<mark>Netty 提供了大量预定义的可以开箱即用的 ChannelHandler 实现</mark>,包括用于各种协议(如 HTTP 和 SSL/TLS)的 ChannelHandler。在内部,ChannelHandler 自己也使用了事件和 Future,使得它们也成为了你的应用程序将使用的相同抽象的消费者。
 
 # 总结
 
 ## Future、回调和 ChannelHandler
 
-Netty的<u>异步编程模型是建立在Future和回调的概念之上</u>的,  而将事件派发到ChannelHandler 的方法则发生在更深的层次上。 结合在一起, 这些元素就提供了一个处理环境, 使你的应用程序逻辑可以独立于任何网络操作相关的顾虑而独立地演变。这也是 Netty 的设计方式的一个关键目标。
+Netty的<mark>异步编程模型是建立在Future和回调的概念之上</mark>的,  而将事件派发到ChannelHandler 的方法则发生在更深的层次上。 结合在一起, 这些元素就提供了一个处理环境, 使你的应用程序逻辑可以独立于任何网络操作相关的顾虑而独立地演变。这也是 Netty 的设计方式的一个关键目标。
 拦截操作以及高速地转换入站数据和出站数据, 都只需要你提供回调或者利用操作所返回的Future。这使得链接操作变得既简单又高效,并且促进了可重用的通用代码的编写。
 
 ## 选择器、事件和 EventLoop
 
-Netty 通过<u>触发事件将 Selector 从应用程序中抽象出来,消除了所有本来将需要手动编写的派发代码</u>。在内部,将会为每个 Channel分配一个 EventLoop,用以处理所有事件,包括:
+Netty 通过<mark>触发事件将 Selector 从应用程序中抽象出来,消除了所有本来将需要手动编写的派发代码</mark>。在内部,将会为每个 Channel分配一个 EventLoop,用以处理所有事件,包括:
 
 *   注册感兴趣的事件;
 *   将事件派发给 ChannelHandler;
 
 *   安排进一步的动作。 
 
-<u>EventLoop 本身只由一个线程驱动</u>,其处理了一个 Channel 的所有 I/O 事件,并且在该EventLoop 的整个生命周期内都不会改变。这个简单而强大的设计消除了你可能有的在ChannelHandler实现中需要进行同步的任何顾虑,因此,你可以专注于提供正确的逻辑,用来在有感兴趣的数据要处理的时候执行。如同我们在详细探讨 Netty 的线程模型时将会看到的, 该 API 是简单而紧凑的。
+<mark>EventLoop 本身只由一个线程驱动</mark>,其处理了一个 Channel 的所有 I/O 事件,并且在该EventLoop 的整个生命周期内都不会改变。这个简单而强大的设计消除了你可能有的在ChannelHandler实现中需要进行同步的任何顾虑,因此,你可以专注于提供正确的逻辑,用来在有感兴趣的数据要处理的时候执行。如同我们在详细探讨 Netty 的线程模型时将会看到的, 该 API 是简单而紧凑的。
 
 ---
 

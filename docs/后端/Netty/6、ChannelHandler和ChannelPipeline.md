@@ -22,8 +22,8 @@ typora-root-url: /Volumes/硬盘/Code/docs/docs/public
 |    ChannelActive    | Channel处于活动状态 (已经连接到它的远程节点) 。 它现在可以接收和发送数据了 |
 |   ChannelInactive   |                  Channel没有连接到远程节点                   |
 
-Channel 的正常生命周期如图 6-1 所示。<u>当这些状态发生改变时,将会生成对应的事件。</u>
-<u>这些事件将会被转发给 ChannelPipeline 中的 ChannelHandler</u>, 其可以随后对它们做出响应。
+Channel 的正常生命周期如图 6-1 所示。<mark>当这些状态发生改变时,将会生成对应的事件。</mark>
+<mark>这些事件将会被转发给 ChannelPipeline 中的 ChannelHandler</mark>, 其可以随后对它们做出响应。
 
 <img src="/Netty实战_page_95_1.png" alt="Netty实战_page_95_1" style="zoom:30%;" />
 
@@ -31,7 +31,7 @@ Channel 的正常生命周期如图 6-1 所示。<u>当这些状态发生改变�
 
 ### ChannelHandler 的生命周期
 
-表 6-2 中列出了`interface ChannelHandler` 定义的生命周期操作,<u>在ChannelHandler 被添加到 ChannelPipeline 中或者被从 ChannelPipeline 中移除时会调用这些操作</u>。 <u>这些方法中的每一个都接受一个 ChannelHandlerContext 参数</u>。
+表 6-2 中列出了`interface ChannelHandler` 定义的生命周期操作,<mark>在ChannelHandler 被添加到 ChannelPipeline 中或者被从 ChannelPipeline 中移除时会调用这些操作</mark>。 <mark>这些方法中的每一个都接受一个 ChannelHandlerContext 参数</mark>。
 
 <TableCaption title='表 6-2  ChannelHandler的生命周期方法' />
 
@@ -65,7 +65,7 @@ Netty 定义了下面两个重要的 ChannelHandler 子接口:
 | channelWritabilityChanged | 当 Channel 的可写状态发生改变时被调用。用户可以确保写操作不会完成得太快(以避免发生 OutOfMemoryError)或者可以在 Channel 变为再次可写时恢复写入。 可以通过调用Channel的isWritable()方法来检测Channel的可写性。与可写性相关的阈值可以通过Channel.config(). <br/>setWriteHighWaterMark()和Channel.config().setWriteLowWaterMark()方法来设置 |
 |    userEventTriggered     | 当 ChannelnboundHandler.fireUserEventTriggered()方法被调用时被调用,因为一个 POJO 被传经了ChannelPipeline |
 
-当某个 ChannelInboundHandler 的实现重写 channelRead()方法时, <u>它将负责显式地释放与池化的 ByteBuf 实例相关的内存</u>。Netty 为此提供了一个实用方法 ReferenceCountUtil.release(),如代码清单 6-1 所示。
+当某个 ChannelInboundHandler 的实现重写 channelRead()方法时, <mark>它将负责显式地释放与池化的 ByteBuf 实例相关的内存</mark>。Netty 为此提供了一个实用方法 ReferenceCountUtil.release(),如代码清单 6-1 所示。
 
 ```java
 @Sharable 
@@ -89,7 +89,7 @@ public class SimpleDiscardHandler extends SimpleChannelInboundHandler<Object> { 
 }
 ```
 
-<u>由于 SimpleChannelInboundHandler 会自动释放资源,所以你不应该存储指向任何消息的引用供将来使用,因为这些引用都将会失效</u>。 [6.1.6 节](#资源管理)为引用处理提供了更加详细的讨论。
+<mark>由于 SimpleChannelInboundHandler 会自动释放资源,所以你不应该存储指向任何消息的引用供将来使用,因为这些引用都将会失效</mark>。 [6.1.6 节](#资源管理)为引用处理提供了更加详细的讨论。
 
 ### ChannelOutboundHandler 接口
 
@@ -128,9 +128,9 @@ ChannelOutboundHandler 的一个强大的功能是可以按需推迟操作或者
 
 <TableCaption title='图 6-2  ChannelHandlerAdapter 类的层次结构' />
 
-<u>ChannelHandlerAdapter 还提供了实用方法 isSharable()</u>。如果其对应的实现被标注为 Sharable,那么这个方法将返回 true,表示它可以被添加到多个 ChannelPipeline 中(如在 2.3.1 节中所讨论过的一样) 。 
+<mark>ChannelHandlerAdapter 还提供了实用方法 isSharable()</mark>。如果其对应的实现被标注为 Sharable,那么这个方法将返回 true,表示它可以被添加到多个 ChannelPipeline 中(如在 2.3.1 节中所讨论过的一样) 。 
 
-<u>在 ChannelInboundHandlerAdapter 和 ChannelOutboundHandlerAdapter 中所提供的方法体调用了其相关联的 ChannelHandlerContext 上的等效方法</u>, 从而将事件转发到了 ChannelPipeline 中的下一个 ChannelHandler 中。 
+<mark>在 ChannelInboundHandlerAdapter 和 ChannelOutboundHandlerAdapter 中所提供的方法体调用了其相关联的 ChannelHandlerContext 上的等效方法</mark>, 从而将事件转发到了 ChannelPipeline 中的下一个 ChannelHandler 中。 
 
 你要想在自己的 ChannelHandler 中使用这些适配器类,只需要简单地扩展它们,并且重写那些你想要自定义的方法。
 
@@ -162,8 +162,8 @@ io.netty.handler.codec.xml.XmlFrameDecoderTest.testDecodeWithTwoMessages(
 
 重要的是,不仅要释放资源,还要通知 ChannelPromise。否则可能会出现 ChannelFutureListener 收不到某个消息已经被处理了的通知的情况。
 
-总之,<u>如果一个消息被消费或者丢弃了,并且没有传递给 ChannelPipeline 中的下一个ChannelOutboundHandler,那么用户就有责任调用 ReferenceCountUtil.release()。</u>
-<u>如果消息到达了实际的传输层,那么当它被写入时或者 Channel 关闭时,都将被自动释放</u>。
+总之,<mark>如果一个消息被消费或者丢弃了,并且没有传递给 ChannelPipeline 中的下一个ChannelOutboundHandler,那么用户就有责任调用 ReferenceCountUtil.release()。</mark>
+<mark>如果消息到达了实际的传输层,那么当它被写入时或者 Channel 关闭时,都将被自动释放</mark>。
 
 ## ChannelPipeline 接口
 
@@ -288,9 +288,9 @@ ChannelPipeline 的 API 公开了用于调用入站和出站操作的附加方�
 
 ## ChannelHandlerContext接口
 
-<u>ChannelHandlerContext 代表了 ChannelHandler 和 ChannelPipeline 之间的关联 ,每当有 ChannelHandler 添加到 ChannelPipeline 中时, 都会创建 ChannelHandlerContext</u>。 ChannelHandlerContext 的主要功能是管理它所关联的 ChannelHandler 和在同一个 ChannelPipeline 中的其他 ChannelHandler 之间的交互。
+<mark>ChannelHandlerContext 代表了 ChannelHandler 和 ChannelPipeline 之间的关联 ,每当有 ChannelHandler 添加到 ChannelPipeline 中时, 都会创建 ChannelHandlerContext</mark>。 ChannelHandlerContext 的主要功能是管理它所关联的 ChannelHandler 和在同一个 ChannelPipeline 中的其他 ChannelHandler 之间的交互。
 
-ChannelHandlerContext 有很多的方法,其中一些方法也存在于 Channel 和 ChannelPipeline 本身上,但是有一点重要的不同。<u>如果调用Channel 或者ChannelPipeline 上的这些方法,它们将沿着整个ChannelPipeline 进行传播。而调用位于ChannelHandlerContext 上的相同方法,则将从当前所关联的 ChannelHandler 开始,并且只会传播给位于该ChannelPipeline 中的下一个能够处理该事件的ChannelHandler。</u>
+ChannelHandlerContext 有很多的方法,其中一些方法也存在于 Channel 和 ChannelPipeline 本身上,但是有一点重要的不同。<mark>如果调用Channel 或者ChannelPipeline 上的这些方法,它们将沿着整个ChannelPipeline 进行传播。而调用位于ChannelHandlerContext 上的相同方法,则将从当前所关联的 ChannelHandler 开始,并且只会传播给位于该ChannelPipeline 中的下一个能够处理该事件的ChannelHandler。</mark>
 
 表 6-10 对 ChannelHandlerContext API 进行了总结。
 
@@ -419,7 +419,7 @@ public class UnsharableHandler extends ChannelInboundHandlerAdapter {
 
 这段代码的问题在于它拥有状态[^6] ,即用于跟踪方法调用次数的实例变量count。将这个类的一个实例添加到ChannelPipeline将极有可能在它被多个并发的Channel访问时导致问题。 (当然,这个简单的问题可以通过使channelRead()方法变为同步方法来修正。 ) 
 
-总之,<u>只应该在确定了你的 ChannelHandler 是线程安全的时才使用@Sharable 注解</u>。
+总之,<mark>只应该在确定了你的 ChannelHandler 是线程安全的时才使用@Sharable 注解</mark>。
 
 ::: tip 为何要共享同一个ChannelHandler
 

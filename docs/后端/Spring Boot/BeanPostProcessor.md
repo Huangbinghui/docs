@@ -9,7 +9,7 @@ typora-root-url: /Volumes/硬盘/Code/docs/docs/public
 
 有时候，我们希望`Spring`容器在创建`bean`的过程中，能够使用我们自己定义的逻辑，对创建的`bean`做一些处理，或者执行一些业务。而实现方式有多种，比如自定义`bean`的初始化话方法等，而`BeanPostProcessor`接口也是用来实现类似的功能的。
 
-  如果我们希望容器中创建的每一个`bean`，在创建的过程中可以执行一些自定义的逻辑，那么我们就可以编写一个类，并让他实现`BeanPostProcessor`接口，然后将这个类注册到一个容器中。容器在创建`bean`的过程中，会<u>优先创建实现了`BeanPostProcessor`接口的`bean`</u>，然后，<u>在创建其他`bean`的时候，会将创建的每一个`bean`作为参数，调用`BeanPostProcessor`的方法</u>。而`BeanPostProcessor`接口的方法，即是由我们自己实现的。下面就来具体介绍一下`BeanPostProcessor`的使用。
+  如果我们希望容器中创建的每一个`bean`，在创建的过程中可以执行一些自定义的逻辑，那么我们就可以编写一个类，并让他实现`BeanPostProcessor`接口，然后将这个类注册到一个容器中。容器在创建`bean`的过程中，会<mark>优先创建实现了`BeanPostProcessor`接口的`bean`</mark>，然后，<mark>在创建其他`bean`的时候，会将创建的每一个`bean`作为参数，调用`BeanPostProcessor`的方法</mark>。而`BeanPostProcessor`接口的方法，即是由我们自己实现的。下面就来具体介绍一下`BeanPostProcessor`的使用。
 
 # `BeanPostProcessor`的使用
 
