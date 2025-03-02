@@ -68,7 +68,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { reactive, toRefs, onMounted } from 'vue';
+  import { reactive, toRefs } from 'vue';
   import { useData } from 'vitepress';
   import dayjs from 'dayjs';
   import 'dayjs/locale/zh-cn';
