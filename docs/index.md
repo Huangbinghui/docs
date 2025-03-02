@@ -12,6 +12,7 @@ hero:
 ---
 <script setup>
   import Home from '../components/Home.vue'
+  import Archives from '../components/Archives.vue'
 </script>
 
 <Home/>
