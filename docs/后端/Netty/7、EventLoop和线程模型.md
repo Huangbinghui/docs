@@ -34,7 +34,7 @@ typora-root-url: /Volumes/硬盘/Code/docs/docs/public
 
 代码清单 7-1 中说明了事件循环的基本思想, 其中每个任务都是一个 Runnable 的实例 (如图 7-1 所示) 。
 
-```java
+```java [代码清单 7-1]
 while (!terminated) {   
     List<Runnable> readyEvents = blockUntilEventsReady();
     for (Runnable ev: readyEvents) {
@@ -104,7 +104,7 @@ Netty 4 中所采用的线程模型, 通过在同一个线程中处理某个给�
 
 虽然选择不是很多[^3],但是这些预置的实现已经足以应对大多数的用例。代码清单 7-2 展示了如何使用ScheduledExecutorService来在 60 秒的延迟之后执行一个任务。
 
-```java
+```java [代码清单 7-2]
 ScheduledExecutorService executor =     
     Executors.newScheduledThreadPool(10);
 ScheduledFuture<?> future = executor.schedule(
@@ -123,7 +123,7 @@ executor.shutdown();
 
 ScheduledExecutorService 的实现具有局限性,例如,事实上作为线程池管理的一部分,将会有额外的线程创建。如果有大量任务被紧凑地调度,那么这将成为一个瓶颈。Netty 通过 Channel 的 EventLoop 实现任务调度解决了这一问题,如代码清单 7-3 所示。
 
-```java
+```java [代码清单 7-3]
 Channel ch = ... 
 ScheduledFuture<?> future = ch.eventLoop().schedule(
     new Runnable() {
@@ -136,7 +136,7 @@ ScheduledFuture<?> future = ch.eventLoop().schedule(
 
 经过 60 秒之后, Runnable 实例将由分配给 Channel 的 EventLoop 执行。 如果要调度任务以每隔 60 秒执行一次,请使用 `scheduleAtFixedRate()`方法,如代码清单 7-4 所示。
 
-```java
+```java [代码清单 7-4]
 Channel ch = ... 
 ScheduledFuture<?> future = ch.eventLoop().scheduleAtFixedRate( // 创建一个 Runnable, 以供调度稍后执行
     new Runnable() {
@@ -151,7 +151,7 @@ ScheduledFuture<?> future = ch.eventLoop().scheduleAtFixedRate( // 创建一个 
 
 要想取消或者检查(被调度任务的)执行状态,可以使用每个异步操作所返回的 ScheduledFuture。代码清单 7-5 展示了一个简单的取消操作。
 
-```java
+```java [代码清单 7-5]
 ScheduledFuture<?> future = ch.eventLoop().scheduleAtFixedRate(...); // 调度任务,并 获得所返回的 ScheduledFuture
 // Some other code that runs... 
 boolean mayInterruptIfRunning = false;

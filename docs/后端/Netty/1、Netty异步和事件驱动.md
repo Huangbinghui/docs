@@ -75,7 +75,7 @@ Netty 在内部使用了回调来处理事件; 当一个回调被触发时, 相�
 
 代码清单 1-2 展示了一个例子: 当一个新的连接已经被建立时, ChannelHandler 的 channelActive()回调方法将会被调用,并将打印出一条信息。
 
-```java
+```java [代码清单 1-2]
 public class ConnectHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {

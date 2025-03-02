@@ -206,7 +206,7 @@ Echo 客户端将会:
 *   channelRead0()[^1]——当从服务器接收到一条消息时被调用;
 *   exceptionCaught()——在处理过程中引发异常时被调用。
 
-```java
+```java [代码清单 2-3]
 package org.huangbh;
 
 import io.netty.buffer.ByteBuf;
