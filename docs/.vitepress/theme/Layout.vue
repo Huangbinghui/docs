@@ -2,7 +2,17 @@
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { nextTick, provide } from 'vue'
+import {
+  NolebaseEnhancedReadabilitiesMenu,
+  NolebaseEnhancedReadabilitiesScreenMenu,
+} from '@nolebase/vitepress-plugin-enhanced-readabilities/client'
 
+//导入 闪烁高亮当前目标标题 依赖
+import {
+  NolebaseHighlightTargetedHeading,
+} from '@nolebase/vitepress-plugin-highlight-targeted-heading/client'
+
+const { Layout } = DefaultTheme
 const { isDark } = useData()
 
 const enableTransitions = () =>
@@ -40,7 +50,17 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
 </script>
 
 <template>
-  <DefaultTheme.Layout />
+  <Layout>
+    <template #nav-bar-content-after>
+      <NolebaseEnhancedReadabilitiesMenu/>
+    </template>
+    <template #nav-screen-content-after>
+      <NolebaseEnhancedReadabilitiesScreenMenu/>
+    </template>
+    <template #layout-top>
+      <NolebaseHighlightTargetedHeading/>
+    </template>
+  </Layout>
 </template>
 
 <style>
