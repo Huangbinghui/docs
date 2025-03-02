@@ -34,11 +34,9 @@ while ((request = in.readLine()) != null) {
 
 Java 对于非阻塞 I/O 的支持是在 2002 年引入的,位于 JDK 1.4 的 java.nio 包中。
 
->   [!NOTE]
->
->   **新的还是非阻塞的**
->
->   ​	NIO 最开始是新的输入/输出(New Input/Output)的英文缩写,但是,该 Java API 已经出现足够长的时间了, 不再是 “新的” 了, 因此, 如今大多数的用户认为 NIO 代表非阻塞 I/O (Non-blocking I/O) , 而阻塞 I/O (blocking I/O)是旧的输入/输出(old input/output,OIO) 。你也可能遇到它被称为普通 I/O(plain I/O)的时候。
+:::tip  **新的还是非阻塞的**
+NIO 最开始是新的输入/输出(New Input/Output)的英文缩写,但是,该 Java API 已经出现足够长的时间了, 不再是 “新的” 了, 因此, 如今大多数的用户认为 NIO 代表非阻塞 I/O (Non-blocking I/O) , 而阻塞 I/O (blocking I/O)是旧的输入/输出(old input/output,OIO) 。你也可能遇到它被称为普通 I/O(plain I/O)的时候。
+:::
 
 ## 选择器
 
