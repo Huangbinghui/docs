@@ -2,9 +2,6 @@
 typora-copy-images-to: ../../public
 typora-root-url: /Volumes/硬盘/Code/docs/docs/public
 ---
-
-
-
 # Netty 客户端/服务器概览
 
 下图从高层次上展示了一个你将要编写的 Echo 客户端和服务器应用程序。虽然你的主要关注点可能是编写基于 Web 的用于被浏览器访问的应用程序,但是通过同时实现客户端和服务器,你一定能更加全面地理解 Netty 的 API。

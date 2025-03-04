@@ -2,11 +2,6 @@
 typora-copy-images-to: ../../public
 typora-root-url: /Volumes/硬盘/Code/docs/docs/public
 ---
-
-<script setup>
-    import TableCaption from '../../.vitepress/theme/components/TableCaption.vue'
-</script>
-
 ## 线程模型概述
 
 线程模型确定了代码的执行方式。 由于我们总是必须规避并发执行可能会带来的副作用,所以理解所采用的并发模型(也有单线程的线程模型)的影响很重要。
