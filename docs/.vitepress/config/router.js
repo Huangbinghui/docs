@@ -72,11 +72,15 @@ export const backend = [
           },
           {
             text: "BeanPostProcessor",
-            link: "后端/Spring Boot/BeanPostProcessor",
+            link: "/后端/Spring Boot/BeanPostProcessor",
           },
           {
             text: "InitializingBean",
-            link: "后端/Spring Boot/InitializingBean",
+            link: "/后端/Spring Boot/InitializingBean",
+          },
+          {
+            text: "SpringBoot字段校验",
+            link: "/后端/Spring Boot/Validation.md",
           },
         ],
       },
@@ -254,4 +258,5 @@ export const nav = [
   { text: "前端", link: "/前端/SCSS" },
   { text: "兴趣", link: "/兴趣/" },
   { text: "工具", link: "/工具/index" },
+  { text: "归档", link: "/归档/Archive" },
 ];
