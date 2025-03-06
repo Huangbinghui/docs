@@ -5,7 +5,7 @@ import parseFrontmatter from 'gray-matter';
 const excludedFiles = ['index.md', 'tags.md', 'archives.md', 'me.md'];
 
 export default {
-  watch: ['./docs/**/*.md'],
+  watch: ['../../../docs/**/*.md'],
   load(watchedFiles) {
     // 排除不必要文件
     const articleFiles = watchedFiles.filter(file => {
@@ -15,10 +15,14 @@ export default {
     // 解析文章 Frontmatter
     return articleFiles.map(articleFile => {
       const articleContent = fs.readFileSync(articleFile, 'utf-8');
+      const stats = fs.statSync(articleFile);
+      const filename = path.basename(articleFile);
       const { data } = parseFrontmatter(articleContent);
       return {
         ...data,
         path: articleFile.substring(articleFile.lastIndexOf('/docs/') + 6).replace(/\.md$/, ''),
+        timestamp: stats.ctime,
+        title: filename.replace(/\.md$/, ''),
       }
     })
   }
