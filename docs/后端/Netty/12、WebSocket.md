@@ -279,7 +279,7 @@ mvn -PChatServer clean package exec:exec
 mvn -PChatServer -Dport=1111 clean package exec:exec
 ```
 
-你通过将自己的浏览器指向 http://localhost:9999 来访问该应用程序。图 12-5 展示了其在Chrome 浏览器中的 UI。 
+你通过将自己的浏览器指向 localhost:9999 来访问该应用程序。图 12-5 展示了其在Chrome 浏览器中的 UI。 
 
 图中展示了两个已经连接的客户端。 第一个客户端是使用上面的界面连接的, 第二个客户端则是通过底部的 Chrome 浏览器的命令行工具连接的。你会注意到,两个客户端都发送了消息, 并且每个消息都显示在两个客户端中。 
 
