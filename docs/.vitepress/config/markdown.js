@@ -13,5 +13,15 @@ export const markdown = {
     config: (md) => {
         md.use(mdFootnote);
         md.use(groupIconMdPlugin); //代码组图标
+        md.renderer.rules.image = (tokens, idx, options, env, self) => {
+            const token = tokens[idx];
+            let alt = token.attrGet('alt');
+            console.log("alt :"+ alt);
+            let result = self.renderToken(tokens, idx, options);
+            if (alt) {
+                result += `\n<ClientOnly><TableCaption title='${alt}' /></ClientOnly>`
+            }
+            return result;
+        }
     },
 }
