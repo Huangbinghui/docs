@@ -23,8 +23,8 @@ export const themeConfig = {
     returnToTopLabel: '返回顶部',
     lastUpdatedText: '最后更新', // 最后更新时间文本配置, 需先配置lastUpdated为true
     articleMetadataConfig: {
-        author: '查尔斯', // 文章全局默认作者名称
+        author: 'Herberth', // 文章全局默认作者名称
         authorLink: '/about/me', // 点击作者名时默认跳转的链接
         showViewCount: false, // 是否显示文章阅读数, 需要在 docs/.vitepress/theme/api/config.js 及 interface.js 配置好相应 API 接口
-      },
+    },
 }
