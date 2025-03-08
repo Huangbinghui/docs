@@ -1,5 +1,3 @@
-import tailwindcss from "tailwindcss";
-import autoprefixer from "autoprefixer";
 import Icons from "unplugin-icons/vite";
 import { groupIconVitePlugin } from "vitepress-plugin-group-icons";
 import vueDevTools from "vite-plugin-vue-devtools";
