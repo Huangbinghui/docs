@@ -3,6 +3,7 @@ import autoprefixer from "autoprefixer";
 import Icons from "unplugin-icons/vite";
 import { groupIconVitePlugin } from "vitepress-plugin-group-icons";
 import vueDevTools from "vite-plugin-vue-devtools";
+import tailwindcss from '@tailwindcss/vite'
 
 export const vite = {
   //阅读增强 插件
@@ -17,11 +18,6 @@ export const vite = {
       "@nolebase/vitepress-plugin-highlight-targeted-heading",
     ],
   },
-  css: {
-    postcss: {
-      plugins: [tailwindcss(), autoprefixer()],
-    },
-  },
   plugins: [
     vueDevTools(),
     groupIconVitePlugin({
@@ -32,6 +28,7 @@ export const vite = {
     Icons({
         // experimental
         autoInstall: true,
-      })
+      }),
+      tailwindcss(),
   ],
 };

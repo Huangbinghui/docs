@@ -43,9 +43,7 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --vp-c-default-1: var(--vp-c-gray-1);
