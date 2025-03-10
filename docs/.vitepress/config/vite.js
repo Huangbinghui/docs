@@ -1,6 +1,4 @@
-import Icons from "unplugin-icons/vite";
 import { groupIconVitePlugin } from "vitepress-plugin-group-icons";
-import vueDevTools from "vite-plugin-vue-devtools";
 import tailwindcss from '@tailwindcss/vite'
 
 export const vite = {
@@ -17,16 +15,11 @@ export const vite = {
     ],
   },
   plugins: [
-    vueDevTools(),
     groupIconVitePlugin({
       customIcon: {
         java: "devicon:java-wordmark",
       },
     }), //代码组图标
-    Icons({
-      // experimental
-      autoInstall: true,
-    }),
     tailwindcss(),
   ],
 };

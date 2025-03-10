@@ -2,11 +2,11 @@
   <div class="meta-wrapper">
     <div class="meta-item original">
       <span v-if="isOriginal" color="orangered" title="原创文章">
-        <StashTrophySolid />
+        <span class="iconify stash--trophy"></span>
         原创
       </span>
       <span v-else color="arcoblue" title="转载文章">
-        <BxsShareAlt />
+        <span class="iconify solar--share-broken"></span>
         转载
       </span>
     </div>
@@ -141,7 +141,6 @@ import { useData } from "vitepress";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
 import relativeTime from "dayjs/plugin/relativeTime";
-import StashTrophySolid from "~icons/stash/trophy-solid";
 import BxsShareAlt from "~icons/bxs/share-alt";
 
 dayjs.extend(relativeTime);
