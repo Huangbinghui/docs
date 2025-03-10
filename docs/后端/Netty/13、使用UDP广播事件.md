@@ -41,7 +41,7 @@ UDP 提供了向多个接收者发送消息的额外传输模式:
 
 图 13-1 展示了整个系统的一个高级别视图,其由一个广播者以及一个或者多个事件监视器所组成。广播者将监听新内容的出现,当它出现时,则通过 UDP 将它作为一个广播消息进行传输。
 
-<img src="/Netty实战_page_200_1.png" alt="图 13-1  广播系统概览" style="zoom:25%;" />
+![图 13-1  广播系统概览](/Netty实战_page_200_1.png)
 
 所有的在该 UDP 端口上监听的事件监视器都将会接收到广播消息。 
 
@@ -106,11 +106,11 @@ Netty 的 DatagramPacket 是一个简单的消息容器,DatagramChannel 实现�
 
 图 13-2 展示了正在广播的 3 个日志条目,每一个都将通过一个专门的 DatagramPacket 进行广播。
 
-<img src="/Netty实战_page_202_1.png" alt="图 13-2  通过 DatagramPacket 发送的日志条目" style="zoom:15%;" />
+![图 13-2  通过 DatagramPacket 发送的日志条目](/Netty实战_page_202_1.png)
 
 图 13-3 呈现了该 LogEventBroadcaster 的 ChannelPipeline 的一个高级别视图,展示了 LogEvent 消息是如何流经它的。
 
-<img src="/Netty实战_page_202_2.png" alt="图 13-3  LogEventBroadcaster:ChannelPipeline 和 LogEvent 事件流" style="zoom:20%;" />
+![图 13-3  LogEventBroadcaster:ChannelPipeline 和 LogEvent 事件流](/Netty实战_page_202_2.png)
 
 正如你所看到的,所有的将要被传输的数据都被封装在了 LogEvent 消息中。LogEventBroadcaster 将把这些写入到 Channel 中, 并通过 ChannelPipeline 发送它们, 在那里它们将会被转换(编码)为 DatagramPacket 消息。最后,他们都将通过 UDP 被广播,并由远程节点(监视器)所捕获。 
 
@@ -222,7 +222,7 @@ $ nc -l -u -p 9999
 
 和之前一样,该逻辑由一组自定义的 ChannelHandler 实现——对于我们的解码器来说, 我们将扩展 MessageToMessageDecoder。 图 13-4 描绘了 LogEventMonitor 的 ChannelPipeline,并且展示了 LogEvent 是如何流经它的。
 
-<img src="/Netty实战_page_206_2.png" alt="图 13-4  LogEventMonitor" style="zoom:25%;" />
+![图 13-4  LogEventMonitor](/Netty实战_page_206_2.png)
 
 ChannelPipeline中的第一个解码器LogEventDecoder负责将传入的DatagramPacket 解码为 LogEvent 消息(一个用于转换入站数据的任何 Netty 应用程序的典型设置) 。代码清单13-6 展示了该实现。
 
