@@ -24,9 +24,9 @@ export const vite = {
       },
     }), //代码组图标
     Icons({
-        // experimental
-        autoInstall: true,
-      }),
-      tailwindcss(),
+      // experimental
+      autoInstall: true,
+    }),
+    tailwindcss(),
   ],
 };
