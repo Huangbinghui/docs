@@ -31,8 +31,6 @@ ByteBuf 维护了两个不同的索引: <mark>一个用于读取, 一个用于�
 
 ![图 5-1  一个读索引和写索引都设置为 0 的 16 字节 ByteBuf](/Netty实战_page_77_1.png)
 
-<TableCaption :title="'图 5-1  一个读索引和写索引都设置为 0 的 16 字节 ByteBuf'"/>
-
 要了解这些索引两两之间的关系, 请考虑一下, 如果打算读取字节直到 readerIndex 达到和 writerIndex 同样的值时会发生什么。在那时,你将会到达“可以读取的”数据的末尾。就如同试图读取超出数组末尾的数据一样, 试图读取超出该点的数据将会触发一个IndexOutOfBoundsException。
 
 名称以 read 或者 write 开头的 ByteBuf 方法,将会推进其对应的索引,而名称以 set 或者 get 开头的操作则不会。后面的这些方法将在作为一个参数传入的一个相对索引上执行操作。
@@ -185,8 +183,6 @@ for (int i = 0; i < buffer.capacity(); i++) {
 图 5-4 展示了图 5-3 中所展示的缓冲区上调用discardReadBytes()方法后的结果。可以看到,可丢弃字节分段中的空间已经变为可写的了。注意,在调用discardReadBytes()之后,对可写分段的内容并没有任何的保证[^2]。
 
 ![图 5-4  丢弃已读字节之后的 ByteBuf](/Netty实战_page_82_1.png)
-
-<TableCaption :title="'图 5-4  丢弃已读字节之后的 ByteBuf'" />
 
 虽然你可能会倾向于频繁地调用 `discardReadBytes()`方法以确保可写分段的最大化,但是请注意,这将<mark>极有可能会导致内存复制,</mark>因为可读字节(图中标记为 CONTENT 的部分)必须被移动到缓冲区的开始位置。我们建议<mark>只在有真正需要的时候才这样做</mark>,例如,当内存非常宝贵的时候。
 
