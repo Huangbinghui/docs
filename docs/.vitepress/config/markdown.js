@@ -25,6 +25,7 @@ export const markdown = {
     md.renderer.rules.html_block = (tokens, idx, options, env, self) => {
         const token = tokens[idx];
         let content = token.content;
+        console.log("content :" + content);
         // 解析HTML内容中的img标签的alt属性
         const imgRegex = /<img[^>]+alt=["']([^"']+)["'][^>]*>/g;
         let match;
@@ -37,10 +38,11 @@ export const markdown = {
           
           if (alt && alt.trim() !== '') {
             // 在img标签后添加TableCaption组件
-            const replacement = `${fullMatch}\n<ClientOnly><TableCaption title='${alt}' /></ClientOnly>`;
+            const replacement = `\n${fullMatch}\n<TableCaption title='${alt}' />`;
             result = result.replace(fullMatch, replacement);
           }
         }
+        console.log("result :" + result);
         return result;
       };
   },
