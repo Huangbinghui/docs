@@ -24,7 +24,7 @@ Netty 网络抽象的代表:
 
 EventLoop 定义了 Netty 的核心抽象,用于处理连接的生命周期中所发生的事件。我们将在第 7 章中结合 Netty 的线程处理模型的上下文对 EventLoop 进行详细的讨论。目前,图 3-1 在高层次上说明了 Channel、EventLoop、Thread 以及 EventLoopGroup 之间的关系。
 
-<img src="/Netty实战_page_55_1.png" alt="Netty实战_page_55_1" style="zoom:20%;" />
+![Netty实战_page_55_1](/Netty实战_page_55_1.png)
 
 这些关系是:
 
@@ -58,13 +58,13 @@ ChannelHandler 安装到 ChannelPipeline 中的过程如下所示:
 
 ChannelHandler 是专为支持广泛的用途而设计的,可以将它看作是处理往来 ChannelPipeline 事件 (包括数据) 的任何代码的通用容器。 图 3-2 说明了这一点, 其展示了从ChannelHandler 派生的ChannelInboundHandler 和ChannelOutboundHandler 接口。
 
-<img src="/Netty实战_page_57_1.png" alt="Netty实战_page_57_1" style="zoom:25%;" />
+![Netty实战_page_57_1](/Netty实战_page_57_1.png)
 
 <mark>使得事件流经 ChannelPipeline 是 ChannelHandler 的工作</mark>,它们是在应用程序的初始化或者引导阶段被安装的。这些对象接收事件、执行它们所实现的处理逻辑,并将数据传递给链中的下一个 ChannelHandler。它们的执行顺序是由它们被添加的顺序所决定的。<mark>实际上, 被我们称为 ChannelPipeline 的是这些 ChannelHandler 的编排顺序。</mark>
 
 下图说明了一个 Netty 应用程序中入站和出站数据流之间的区别。从一个客户端应用程序的角度来看,如果事件的运动方向是从客户端到服务器端,那么我们称这些事件为出站的,反之则称为入站的。
 
-<img src="/Netty实战_page_57_2.png" alt="Netty实战_page_57_2" style="zoom:25%;" />
+![Netty实战_page_57_2](/Netty实战_page_57_2.png)
 
 上图也显示了入站和出站 ChannelHandler 可以被安装到同一个 ChannelPipeline 中。如果一个消息或者任何其他的入站事件被读取,那么它会从 ChannelPipeline 的头部开始流动,并被传递给第一个 ChannelInboundHandler。这个 ChannelHandler 不一定会实际地修改数据,具体取决于它的具体功能,在这之后,数据将会被传递给链中的下一个ChannelInboundHandler。最终,数据将会到达 ChannelPipeline 的尾端,届时,所有处理就都结束了。
 
@@ -139,7 +139,7 @@ Netty 的引导类为应用程序的网络层配置提供了容器,这涉及将�
 
 <mark>因为服务器需要两组不同的 Channel</mark>。第一组将只包含一个 ServerChannel,代表服务器自身的已绑定到某个本地端口的正在监听的套接字。 而第二组将包含所有已创建的用来处理传入客户端连接(对于每个服务器已经接受的连接都有一个)的 Channel。图 3-4 说明了这个模型,并且展示了为何需要两个不同的 EventLoopGroup。
 
-<img src="/Netty实战_page_61_1.png" alt="Netty实战_page_61_1" style="zoom:25%;" />
+![Netty实战_page_61_1](/Netty实战_page_61_1.png)
 
 与 ServerChannel 相关联的 EventLoopGroup 将分配一个负责为传入连接请求创建Channel 的 EventLoop。一旦连接被接受,第二个 EventLoopGroup 就会给它的 Channel 分配一个 EventLoop。
 

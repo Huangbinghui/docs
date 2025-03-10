@@ -15,7 +15,7 @@ typora-root-url: /Volumes/硬盘/Code/docs/docs/public
 
 图 7-1 说明了这个模式。
 
-<img src="/Netty实战_page_114_1.png" alt="图 7-1  Executor 的执行逻辑" style="zoom:15%;" />
+![图 7-1  Executor 的执行逻辑](/Netty实战_page_114_1.png)
 
 虽然池化和重用线程相对于简单地为每个任务都创建和销毁线程是一种进步, 但是<mark>它并不能消除由上下文切换所带来的开销, 其将随着线程数量的增加很快变得明显, 并且在高负载下愈演愈烈</mark>。此外,仅仅由于应用程序的整体复杂性或者并发需求,在项目的生命周期内也可能会出现其他和线程相关的问题。
 
@@ -39,7 +39,7 @@ while (!terminated) {
 Netty 的 EventLoop 是协同设计的一部分,它采用了两个基本的 API:<mark>并发和网络编程</mark>。
 首先,`io.netty.util.concurrent` 包构建在 JDK 的 `java.util.concurrent` 包上,用来提供线程执行器。其次,`io.netty.channel` 包中的类,为了与 Channel 的事件进行交互, 扩展了这些接口/类。图 7-2 展示了生成的类层次结构。
 
-<img src="/Netty实战_page_115_1.png" alt="图 7-2  EventLoop 的类层次结构" style="zoom:17%;" />
+![图 7-2  EventLoop 的类层次结构](/Netty实战_page_115_1.png)
 
 在这个模型中,一个 EventLoop 将由一个永远都不会改变的 Thread 驱动,同时任务(Runnable 或者 Callable)可以直接提交给 EventLoop 实现,以立即执行或者调度执行。根据配置和可用核心的不同,可能会创建多个 EventLoop 实例用以优化资源的使用,并且单个EventLoop 可能会被指派用于服务多个 Channel。
 
@@ -161,7 +161,7 @@ future.cancel(mayInterruptIfRunning);// 取消该任务, 防止它再次运行
 
 注意,每个 EventLoop 都有它自已的任务队列,独立于任何其他的 EventLoop。图 7-3 展示了 EventLoop 用于调度任务的执行逻辑。这是 Netty 线程模型的关键组成部分。
 
-<img src="/Netty实战_page_120_1.png" alt="图 7-3  EventLoop 的执行逻辑" style="zoom:20%;" />
+![图 7-3  EventLoop 的执行逻辑](/Netty实战_page_120_1.png)
 
 我们之前已经阐明了不要阻塞当前 I/O 线程的重要性。我们再以另一种方式重申一次: “永远不要将一个长时间运行的任务放入到执行队列中, 因为它将阻塞需要在同一线程上执行的任何其他任务。 ”如果必须要进行阻塞调用或者执行长时间运行的任务,我们建议使用一个专门的EventExecutor。 ( 见 [6.2.1 节](/后端/Netty/6、ChannelHandler和ChannelPipeline#ChannelHandler的执行和阻塞)的“ChannelHandler 的执行和阻塞” ) 。
 
@@ -177,7 +177,7 @@ future.cancel(mayInterruptIfRunning);// 取消该任务, 防止它再次运行
 
 图 7-4 显示了一个EventLoopGroup, 它具有 3 个固定大小的EventLoop (每个EventLoop 都由一个 Thread 支撑) 。在创建 EventLoopGroup 时就直接分配了 EventLoop(以及支撑它们的Thread) ,以确保在需要时它们是可用的。
 
-<img src="/Netty实战_page_121_1.png" alt="图 7-4  用于非阻塞传输(如 NIO 和 AIO)的 EventLoop 分配方式" style="zoom:20%;" />
+![图 7-4  用于非阻塞传输(如 NIO 和 AIO)的 EventLoop 分配方式](/Netty实战_page_121_1.png)
 
 EventLoopGroup 负责为每个新创建的 Channel 分配一个 EventLoop。在当前实现中, 使用顺序循环(round-robin)的方式进行分配以获取一个均衡的分布,并且相同的 EventLoop 可能会被分配给多个 Channel。 (这一点在将来的版本中可能会改变。 )
 
@@ -191,7 +191,7 @@ EventLoopGroup 负责为每个新创建的 Channel 分配一个 EventLoop。在�
 
 这里每一个 Channel 都将被分配给一个 EventLoop(以及它的 Thread) 。如果你开发的应用程序使用过 java.io 包中的阻塞 I/O 实现,你可能就遇到过这种模型。
 
-<img src="/Netty实战_page_122_1.png" alt="图 7-5  阻塞传输(如 OIO)的 EventLoop 分配方式" style="zoom:20%;" />
+![图 7-5  阻塞传输(如 OIO)的 EventLoop 分配方式](/Netty实战_page_122_1.png)
 
 但是,正如同之前一样,得到的保证是每个 Channel 的 I/O 事件都将只会被一个 Thread (用于支撑该 Channel 的 EventLoop 的那个 Thread)处理。这也是另一个 Netty 设计一致性的例子,它(这种设计上的一致性)对 Netty 的可靠性和易用性做出了巨大贡献。
 

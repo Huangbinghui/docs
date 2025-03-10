@@ -29,7 +29,7 @@ Netty 的数据处理 API 通过两个组件暴露——`abstract class ByteBuf`
 
 ByteBuf 维护了两个不同的索引: <mark>一个用于读取, 一个用于写入</mark>。 当你从 ByteBuf 读取时, 它的 readerIndex 将会被递增已经被读取的字节数。同样地,当你写入 ByteBuf 时,它的writerIndex 也会被递增。图 5-1 展示了一个空 ByteBuf 的布局结构和状态。
 
-![Netty实战_page_77_1](/Netty实战_page_77_1.png)
+![图 5-1  一个读索引和写索引都设置为 0 的 16 字节 ByteBuf](/Netty实战_page_77_1.png)
 
 <TableCaption :title="'图 5-1  一个读索引和写索引都设置为 0 的 16 字节 ByteBuf'"/>
 
@@ -108,7 +108,7 @@ Netty 通过一个 ByteBuf 子类——`CompositeByteBuf`——实现了这个�
 
 因为我们不想为每个消息都重新分配这两个缓冲区, 所以使用 CompositeByteBuf 是一个完美的选择。 它在消除了没必要的复制的同时, 暴露了通用的 ByteBuf API。 图 5-2 展示了生成的消息布局。
 
-<img src="/Netty实战_page_79_1.png" class="mx-auto" alt="图 5-2  持有一个头部和主体的 CompositeByteBuf" style="zoom:33%;" />
+![图 5-2  持有一个头部和主体的 CompositeByteBuf](/Netty实战_page_79_1.png)
 
 代码清单 5-3 展示了如何通过使用 JDK 的 ByteBuffer 来实现这一需求。创建了一个包含两个 ByteBuffer 的数组用来保存这些消息组件, 同时创建了第三个 ByteBuffer 用来保存所有这些数据的副本。
 
@@ -176,7 +176,7 @@ for (int i = 0; i < buffer.capacity(); i++) {
 
 虽然 ByteBuf 同时具有读索引和写索引,但是 JDK 的 ByteBuffer 却只有一个索引,这也就是为什么必须调用 flip()方法来在读模式和写模式之间进行切换的原因。图 5-3 展示了ByteBuf 是如何被它的两个索引划分成 3 个区域的。
 
-<img src="/Netty实战_page_81_1.png" class="mx-auto" alt="图 5-3  ByteBuf 的内部分段" style="zoom:25%;" />
+![图 5-3  ByteBuf 的内部分段](/Netty实战_page_81_1.png)
 
 ### 可丢弃字节
 
@@ -184,7 +184,7 @@ for (int i = 0; i < buffer.capacity(); i++) {
 
 图 5-4 展示了图 5-3 中所展示的缓冲区上调用discardReadBytes()方法后的结果。可以看到,可丢弃字节分段中的空间已经变为可写的了。注意,在调用discardReadBytes()之后,对可写分段的内容并没有任何的保证[^2]。
 
-![Netty实战_page_82_1](/Netty实战_page_82_1.png)
+![图 5-4  丢弃已读字节之后的 ByteBuf](/Netty实战_page_82_1.png)
 
 <TableCaption :title="'图 5-4  丢弃已读字节之后的 ByteBuf'" />
 

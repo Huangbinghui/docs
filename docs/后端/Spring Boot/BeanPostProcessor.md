@@ -38,7 +38,7 @@ public interface BeanPostProcessor {
 
 那这两个方法何时执行呢？这就涉及到`Spring`中，`bean`的生命周期了。
 
-<img src="/1324014-20200511005853157-866375398.png" alt="img" style="zoom:50%;" />
+![img](/1324014-20200511005853157-866375398.png)
 
 上图中标红的两个地方就是`BeanPostProcessor`中两个方法的执行时机。`Spring`容器在创建`bean`时，如果容器中包含了`BeanPostProcessor`的实现类对象，那么就会执行这个类的这两个方法，并将当前正在创建的`bean`的引用以及名称作为参数传递进方法中。这也就是说，`BeanPostProcessor`的作用域是当前容器中的所有`bean`（不包括一些特殊的`bean`，这个后面说）。
 

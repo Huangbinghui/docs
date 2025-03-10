@@ -39,7 +39,7 @@ NIO 最开始是新的输入/输出(New Input/Output)的英文缩写,但是,该 
 
 下图展示了一个非阻塞设计,其实际上消除了上一节中所描述的那些弊端。
 
-<img src="/Netty实战_page_30_1.png" alt="Netty实战_page_30_1" style="zoom:33%;" />
+![Netty实战_page_30_1](/Netty实战_page_30_1.png)
 
 `java.nio.channels.Selector` 是Java 的非阻塞 I/O 实现的关键。 它使用了事件通知 API 以确定在一组非阻塞套接字中有哪些已经就绪能够进行 I/O 相关的操作。
 

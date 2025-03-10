@@ -20,7 +20,7 @@ Netty 对于 WebSocket 的支持包含了所有正在使用中的主要实现, �
 
 ​	(2)该消息将被广播到所有其他连接的客户端。
 
-<img src="/Netty实战_page_185_1.png" alt="图 12-1  WebSocket 应用程序逻辑" style="zoom:20%;" />
+![图 12-1  WebSocket 应用程序逻辑](/Netty实战_page_185_1.png)
 
 这正如你可能会预期的一个聊天室应当的工作方式: 所有的人都可以和其他的人聊天。 在示例中,我们将只实现服务器端,而客户端则是通过 Web 页面访问该聊天室的浏览器。正如同你将在接下来的几页中所看到的,WebSocket 简化了编写这样的服务器的过程。
 
@@ -30,7 +30,7 @@ Netty 对于 WebSocket 的支持包含了所有正在使用中的主要实现, �
 
 我们的应用程序将采用下面的约定:如果被请求的 URL 以/ws 结尾,那么我们将会把该协议升级为 WebSocket;否则,服务器将使用基本的 HTTP/S。在连接已经升级完成之后,所有数据都将会使用 WebSocket 进行传输。图 12-2 说明了该服务器逻辑,一如在 Netty 中一样,它由一组 ChannelHandler 实现。我们将会在下一节中,解释用于处理 HTTP 以及 WebSocket 协议的技术时,描述它们。
 
-<img src="/Netty实战_page_186_1.png" alt="图 12-2  服务器逻辑" style="zoom:15%;" />
+![图 12-2  服务器逻辑](/Netty实战_page_186_1.png)
 
 ### 处理HTTP请求
 
@@ -209,12 +209,12 @@ WebSocket 协议升级之前的 ChannelPipeline 的状态如图 12-3 所示。�
 
 :::
 
-<img src="/Netty实战_page_192_1.png" alt="图 12-3  WebSocket 协议升级之前的 ChannelPipeline" style="zoom:20%;" />
+![图 12-3  WebSocket 协议升级之前的 ChannelPipeline](/Netty实战_page_192_1.png)
 
 当 WebSocket 协议升级完成之后,WebSocketServerProtocolHandler 将会把 HttpRequestDecoder 替换为 WebSocketFrameDecoder,把 HttpResponseEncoder 替换为WebSocketFrameEncoder。为了性能最大化,它将移除任何不再被 WebSocket 连接所需要的ChannelHandler。这也包括了图 12-3 所示的 HttpObjectAggregator 和 HttpRequestHandler。 
 图 12-4 展示了这些操作完成之后的ChannelPipeline。 需要注意的是, Netty目前支持 4 个版本的WebSocket协议,它们每个都具有自己的实现类。Netty将会根据客户端(这里指浏览器)所支持的版本[^3],自动地选择正确版本的WebSocketFrameDecoder和WebSocketFrameEncoder。
 
-<img src="/Netty实战_page_192_2.png" alt="图 12-4  WebSocket 协议升级完成之后的 ChannelPipeline" style="zoom:20%;" />
+![图 12-4  WebSocket 协议升级完成之后的 ChannelPipeline](/Netty实战_page_192_2.png)
 
 ### 引导
 
@@ -283,7 +283,7 @@ mvn -PChatServer -Dport=1111 clean package exec:exec
 
 这是一个非常简单的演示,演示了 WebSocket 如何在浏览器中实现实时通信。
 
-<img src="/Netty实战_page_195_2.png" alt="图 12-5  基于 WebSocket 的 ChatServer 的演示" style="zoom:25%;" />
+![图 12-5  基于 WebSocket 的 ChatServer 的演示](/Netty实战_page_195_2.png)
 
 ### 如何进行加密
 
