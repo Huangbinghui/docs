@@ -74,7 +74,7 @@
 }
 
 img {
-  @apply mx-auto;
+  @apply mx-auto max-w-2xl;
 }
 
 .dark img {
