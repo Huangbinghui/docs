@@ -22,8 +22,6 @@ Netty 对于 WebSocket 的支持包含了所有正在使用中的主要实现, �
 
 <img src="/Netty实战_page_185_1.png" alt="图 12-1  WebSocket 应用程序逻辑" style="zoom:20%;" />
 
-<TableCaption title='图 12-1  WebSocket 应用程序逻辑' />
-
 这正如你可能会预期的一个聊天室应当的工作方式: 所有的人都可以和其他的人聊天。 在示例中,我们将只实现服务器端,而客户端则是通过 Web 页面访问该聊天室的浏览器。正如同你将在接下来的几页中所看到的,WebSocket 简化了编写这样的服务器的过程。
 
 ## 添加WebSocket支持

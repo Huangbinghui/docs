@@ -20,9 +20,7 @@ typora-root-url: /Volumes/硬盘/Code/docs/docs/public
 Channel 的正常生命周期如图 6-1 所示。<mark>当这些状态发生改变时,将会生成对应的事件。</mark>
 <mark>这些事件将会被转发给 ChannelPipeline 中的 ChannelHandler</mark>, 其可以随后对它们做出响应。
 
-<img src="/Netty实战_page_95_1.png" alt="Netty实战_page_95_1" style="zoom:30%;" />
-
-<TableCaption title='图 6-1  Channel 的状态模型' />
+<img src="/Netty实战_page_95_1.png" alt="图 6-1  Channel 的状态模型" style="zoom:30%;" />
 
 ### ChannelHandler 的生命周期
 
@@ -119,9 +117,7 @@ ChannelOutboundHandler 的一个强大的功能是可以按需推迟操作或者
 
 你可以使用 ChannelInboundHandlerAdapter 和 ChannelOutboundHandlerAdapter 类作为自己的ChannelHandler 的起始点。这两个适配器分别提供了ChannelInboundHandler 和ChannelOutboundHandler 的基本实现。通过扩展抽象类ChannelHandlerAdapter,它们获得了它们共同的超接口ChannelHandler 的方法。生成的类的层次结构如图 6-2 所示
 
-<img src="/Netty实战_page_98_1.png" alt="Netty实战_page_98_1" style="zoom:20%;" />
-
-<TableCaption title='图 6-2  ChannelHandlerAdapter 类的层次结构' />
+<img src="/Netty实战_page_98_1.png" alt="图 6-2  ChannelHandlerAdapter 类的层次结构" style="zoom:20%;" />
 
 <mark>ChannelHandlerAdapter 还提供了实用方法 isSharable()</mark>。如果其对应的实现被标注为 Sharable,那么这个方法将返回 true,表示它可以被添加到多个 ChannelPipeline 中(如在 2.3.1 节中所讨论过的一样) 。 
 
@@ -179,9 +175,7 @@ ChannelHandlerContext 具有丰富的用于处理事件和执行 I/O 操作的 A
 图 6-3 展示了一个典型的同时具有入站和出站ChannelHandler 的ChannelPipeline 的布局, 并且印证了我们之前的关于ChannelPipeline 主要由一系列的ChannelHandler 所组成的说法。 ChannelPipeline 还提供了通过ChannelPipeline 本身传播事件的方法。 如果一个入站事件被触发, 它将被从ChannelPipeline 的头部开始一直被传播到Channel Pipeline 的尾端。
 在图 6-3 中,一个出站 I/O 事件将从ChannelPipeline 的最右边开始,然后向左传播。
 
-<img src="/Netty实战_page_101_1.png" alt="Netty实战_page_101_1" style="zoom:25%;" />
-
-<TableCaption title='图 6-3  ChannelPipeline 和它的 ChannelHandler' />
+<img src="/Netty实战_page_101_1.png" alt="图 6-3  ChannelPipeline 和它的 ChannelHandler" style="zoom:25%;" />
 
 ::: tip ChannelPipeline 相对论
 
@@ -327,9 +321,7 @@ ChannelHandlerContext 有很多的方法,其中一些方法也存在于 Channel 
 
 在这一节中我们将讨论ChannelHandlerContext 的用法,以及存在于ChannelHandlerContext、Channel 和ChannelPipeline 上的方法的行为。图 6-4 展示了它们之间的关系。
 
-<img src="/Netty实战_page_106_1.png" alt="Netty实战_page_106_1" style="zoom:20%;" />
-
-<TableCaption title='图 6-4  Channel、ChannelPipeline、ChannelHandler 以及 ChannelHandlerContext 之间的关系'/>
+<img src="/Netty实战_page_106_1.png" alt="图 6-4  Channel、ChannelPipeline、ChannelHandler 以及 ChannelHandlerContext 之间的关系" style="zoom:20%;" />
 
 在代码清单 6-6 中,将通过 ChannelHandlerContext 获取到 Channel 的引用。调用Channel上的write()方法将会导致写入事件从尾端到头部地流经 ChannelPipeline。
 
@@ -349,9 +341,7 @@ pipeline.write(Unpooled.copiedBuffer("Netty in Action",       CharsetUtil.UTF_8)
 
 如同在图 6-5 中所能够看到的一样,代码清单 6-6 和代码清单 6-7 中的事件流是一样的。重要的是要注意到, 虽然被调用的Channel或ChannelPipeline 上的write()方法将一直传播事件通过整个ChannelPipeline, 但是在ChannelHandler 的级别上, 事件从一个ChannelHandler 到下一个ChannelHandler 的移动是由ChannelHandlerContext 上的调用完成的。
 
-<img src="/Netty实战_page_107_1.png" alt="Netty实战_page_107_1" style="zoom:20%;" />
-
-<TableCaption title='图 6-5  通过 Channel 或者 ChannelPipeline 进行的事件传播'/>
+<img src="/Netty实战_page_107_1.png" alt="图 6-5  通过 Channel 或者 ChannelPipeline 进行的事件传播" style="zoom:20%;" />
 
 为什么会想要从 ChannelPipeline 中的某个特定点开始传播事件呢? 
 
@@ -370,9 +360,7 @@ ctx.write(Unpooled.copiedBuffer("Netty in Action", CharsetUtil.UTF_8));
 
 如图 6-6 所示, 消息将从下一个 ChannelHandler 开始流经 ChannelPipeline, 绕过了所有前面的 ChannelHandler。
 
-<img src="/Netty实战_page_108_2.png" alt="Netty实战_page_108_2" style="zoom:20%;" />
-
-<TableCaption title='图 6-6  通过 ChannelHandlerContext 触发的操作的事件流'/>
+<img src="/Netty实战_page_108_2.png" alt="图 6-6  通过 ChannelHandlerContext 触发的操作的事件流" style="zoom:20%;" />
 
 我们刚才所描述的用例是常见的,对于调用特定的 ChannelHandler 实例上的操作尤其有用。
 

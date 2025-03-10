@@ -21,9 +21,7 @@ Netty 还提供了使用 OpenSSL 工具包(www.openssl.org)的 SSLEngine 实现�
 
 :::
 
-<img src="/Netty实战_page_162_3.png" alt="Netty实战_page_162_3" style="zoom:20%;" />
-
-<TableCaption title='图 11-1  通过 SslHandler 进行解密和加密的数据流' />
+<img src="/Netty实战_page_162_3.png" alt="图 11-1  通过 SslHandler 进行解密和加密的数据流" style="zoom:20%;" />
 
 代码清单11-1展示了如何使用ChannelInitializer来将SslHandler添加到ChannelPipeline 中。回想一下,ChannelInitializer 用于在 Channel 注册好时设置 ChannelPipeline。
 
@@ -66,13 +64,9 @@ HTTP/HTTPS 是最常见的协议套件之一,并且随着智能手机的成功,�
 
 HTTP 是基于请求/响应模式的: 客户端向服务器发送一个 HTTP 请求, 然后服务器将会返回一个 HTTP 响应。Netty 提供了多种编码器和解码器以简化对这个协议的使用。图 11-2 和图 11-3 分别展示了生产和消费 HTTP 请求和 HTTP 响应的方法。
 
-<img src="/Netty实战_page_164_1.png" alt="Netty实战_page_164_1" style="zoom:20%;" />
+<img src="/Netty实战_page_164_1.png" alt="图 11-2  HTTP 请求的组成部分" style="zoom:20%;" />
 
-<TableCaption title='图 11-2  HTTP 请求的组成部分' />
-
-<img src="/Netty实战_page_164_2.png" alt="Netty实战_page_164_2" style="zoom:20%;" />
-
-<TableCaption title='图 11-3  HTTP 响应的组成部分' />
+<img src="/Netty实战_page_164_2.png" alt="图 11-3  HTTP 响应的组成部分" style="zoom:20%;" />
 
 如图 11-2 和图 11-3 所示,一个 HTTP 请求/响应可能由多个数据部分组成,并且它总是以一个 LastHttpContent 部分作为结束。FullHttpRequest 和 FullHttpResponse 消息是特殊的子类型,分别代表了完整的请求和响应。所有类型的 HTTP 消息(FullHttpRequest、LastHttpContent 以及代码清单 11-2 中展示的那些)都实现了 HttpObject 接口。 
 表 11-2 概要地介绍了处理和生成这些消息的 HTTP 解码器和编码器。
@@ -232,9 +226,7 @@ WebSocket规范以及它的实现代表了对一种更加有效的解决方案�
 
 要想向你的应用程序中添加对于 WebSocket 的支持,你需要将适当的客户端或者服务器WebSocket ChannelHandler 添加到 ChannelPipeline 中。 这个类将处理由 WebSocket 定义的称为帧的特殊消息类型。 如表 11-3 所示, WebSocketFrame 可以被归类为数据帧或者控制帧。
 
-<img src="/Netty实战_page_169_1.png" alt="Netty实战_page_169_1" style="zoom:20%;" />
-
-<TableCaption title='图 11-4  WebSocket 协议' />
+<img src="/Netty实战_page_169_1.png" alt="图 11-4  WebSocket 协议" style="zoom:20%;" />
 
 <br/>
 
@@ -355,8 +347,6 @@ public class IdleStateHandlerInitializer extends ChannelInitializer < Channel > 
 
 <img src="/Netty实战_page_173_2.png" alt="图 11-5  由行尾符分隔的帧" style="zoom:25%;" />
 
-<TableCaption title='图 11-5  由行尾符分隔的帧'/>
-
 如果你正在使用除了行尾符之外的分隔符分隔的帧,那么你可以以类似的方式使用DelimiterBasedFrameDecoder,只需要将特定的分隔符序列指定到其构造函数即可。 
 
 这些解码器是实现你自己的基于分隔符的协议的工具。作为示例,我们将使用下面的协议规范:
@@ -435,15 +425,11 @@ public class CmdHandlerInitializer extends ChannelInitializer < Channel > {
 
 <img src="/Netty实战_page_175_1.png" alt="图 11-6  解码长度为 8 字节的帧" style="zoom:25%;" />
 
-<TableCaption title='图 11-6  解码长度为 8 字节的帧'/>
-
 你将经常会遇到被编码到消息头部的帧大小不是固定值的协议。 为了处理这种变长帧, 你可以使用 LengthFieldBasedFrameDecoder, 它将从头部字段确定帧长, 然后从数据流中提取指定的字节数。 
 
 图 11-7 展示了一个示例,其中长度字段在帧中的偏移量为 0,并且长度为 2 字节。
 
 <img src="/Netty实战_page_176_2.png" alt="图 11-7  将变长帧大小编码进头部的消息" style="zoom:20%;" />
-
-<TableCaption title='图 11-7  将变长帧大小编码进头部的消息'/>
 
 LengthFieldBasedFrameDecoder 提供了几个构造函数来支持各种各样的头部配置情况。 代码清单 11-10 展示了如何使用其 3 个构造参数分别为 maxFrameLength、 lengthFieldOffset 和 lengthFieldLength 的构造函数。 在这个场景中, 帧的长度被编码到了帧起始的前8 个字节中。
 

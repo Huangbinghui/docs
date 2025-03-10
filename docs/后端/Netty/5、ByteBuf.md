@@ -108,9 +108,7 @@ Netty 通过一个 ByteBuf 子类——`CompositeByteBuf`——实现了这个�
 
 因为我们不想为每个消息都重新分配这两个缓冲区, 所以使用 CompositeByteBuf 是一个完美的选择。 它在消除了没必要的复制的同时, 暴露了通用的 ByteBuf API。 图 5-2 展示了生成的消息布局。
 
-<img src="/Netty实战_page_79_1.png" class="mx-auto" alt="Netty实战_page_79_1" style="zoom:33%;" />
-
-<TableCaption :title="'图 5-2  持有一个头部和主体的 CompositeByteBuf'" />
+<img src="/Netty实战_page_79_1.png" class="mx-auto" alt="图 5-2  持有一个头部和主体的 CompositeByteBuf" style="zoom:33%;" />
 
 代码清单 5-3 展示了如何通过使用 JDK 的 ByteBuffer 来实现这一需求。创建了一个包含两个 ByteBuffer 的数组用来保存这些消息组件, 同时创建了第三个 ByteBuffer 用来保存所有这些数据的副本。
 
@@ -178,9 +176,7 @@ for (int i = 0; i < buffer.capacity(); i++) {
 
 虽然 ByteBuf 同时具有读索引和写索引,但是 JDK 的 ByteBuffer 却只有一个索引,这也就是为什么必须调用 flip()方法来在读模式和写模式之间进行切换的原因。图 5-3 展示了ByteBuf 是如何被它的两个索引划分成 3 个区域的。
 
-<img src="/Netty实战_page_81_1.png" class="mx-auto" alt="Netty实战_page_81_1" style="zoom:25%;" />
-
-<TableCaption :title="'图 5-3  ByteBuf 的内部分段'" />
+<img src="/Netty实战_page_81_1.png" class="mx-auto" alt="图 5-3  ByteBuf 的内部分段" style="zoom:25%;" />
 
 ### 可丢弃字节
 
