@@ -23,6 +23,7 @@ export default withMermaid(
     // optionally set additional config for plugin itself with MermaidPluginConfig
     mermaidPlugin: {
       class: "mermaid my-class", // set additional css classes for parent container
-    }
+    },
+		ignoreDeadLinks: true
   })
 );
